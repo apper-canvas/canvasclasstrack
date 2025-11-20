@@ -1,0 +1,28 @@
+[
+  {
+    "Id": 1,
+    "assignmentId": "5",
+    "studentId": "student1",
+    "studentName": "John Smith",
+    "fileName": "art_essay_john_smith.pdf",
+    "fileUrl": "/uploads/art_essay_john_smith.pdf",
+    "fileSize": 2457600,
+    "submittedAt": "2024-01-29T14:30:00Z",
+    "grade": 78,
+    "feedback": "Good analysis of Impressionist techniques. Could strengthen the connection to digital art with more specific examples. Consider exploring the role of light and color in both mediums.",
+    "gradedAt": "2024-02-01T10:15:00Z"
+  },
+  {
+    "Id": 2,
+    "assignmentId": "3",
+    "studentId": "student1",
+    "studentName": "John Smith",
+    "fileName": "calculus_ps7_john_smith.pdf",
+    "fileUrl": "/uploads/calculus_ps7_john_smith.pdf",
+    "fileSize": 1843200,
+    "submittedAt": "2024-01-21T08:45:00Z",
+    "grade": 42,
+    "feedback": "Late submission penalty applied. Several errors in Green's theorem applications. Review the relationship between circulation and curl. Problems 15-18 need rework.",
+    "gradedAt": "2024-01-23T16:20:00Z"
+  }
+]

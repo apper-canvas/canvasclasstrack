@@ -1,0 +1,10 @@
+[
+  {
+    "Id": 1,
+    "name": "John Smith",
+    "email": "john.smith@university.edu",
+    "enrolledCourses": ["CS-301", "CS-401", "MATH-201", "PHYS-211", "ART-305", "CS-501"],
+    "overallGrade": 82.5,
+    "completionRate": 75.0
+  }
+]

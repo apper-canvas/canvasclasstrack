@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "title": "Data Structures Final Project",
+    "description": "Design and implement a binary search tree with full CRUD operations. Your solution should include proper error handling, unit tests, and documentation. The project must demonstrate understanding of tree traversal algorithms and time complexity analysis.",
+    "courseId": "CS-301",
+    "courseName": "Data Structures & Algorithms",
+    "dueDate": "2024-01-25T23:59:00Z",
+    "maxPoints": 100,
+    "allowedFileTypes": [".zip", ".pdf", ".doc", ".docx"],
+    "maxFileSize": 10485760,
+    "status": "pending"
+  },
+  {
+    "Id": 2,
+    "title": "Database Design Assignment",
+    "description": "Create a normalized database schema for an e-commerce platform. Include entity-relationship diagrams, table definitions with proper constraints, and sample queries demonstrating complex joins and aggregations.",
+    "courseId": "CS-401",
+    "courseName": "Database Systems",
+    "dueDate": "2024-01-28T23:59:00Z",
+    "maxPoints": 75,
+    "allowedFileTypes": [".sql", ".pdf", ".doc", ".docx"],
+    "maxFileSize": 5242880,
+    "status": "pending"
+  },
+  {
+    "Id": 3,
+    "title": "Calculus Problem Set 7",
+    "description": "Complete problems 1-20 from Chapter 8. Show all work for partial derivatives and multiple integrals. Pay special attention to problems involving Green's theorem and vector field analysis.",
+    "courseId": "MATH-201",
+    "courseName": "Calculus III",
+    "dueDate": "2024-01-20T15:30:00Z",
+    "maxPoints": 50,
+    "allowedFileTypes": [".pdf", ".doc", ".docx"],
+    "maxFileSize": 5242880,
+    "status": "overdue"
+  },
+  {
+    "Id": 4,
+    "title": "Physics Lab Report",
+    "description": "Analyze the experimental data from the pendulum motion experiment. Calculate the gravitational constant and compare with theoretical values. Include error analysis and discussion of measurement uncertainties.",
+    "courseId": "PHYS-211",
+    "courseName": "Physics II Lab",
+    "dueDate": "2024-02-05T17:00:00Z",
+    "maxPoints": 60,
+    "allowedFileTypes": [".pdf", ".doc", ".docx"],
+    "maxFileSize": 8388608,
+    "status": "pending"
+  },
+  {
+    "Id": 5,
+    "title": "Essay: Modern Art Movements",
+    "description": "Write a 2000-word essay analyzing the influence of Impressionism on contemporary digital art. Include at least 8 scholarly sources and proper MLA formatting. Focus on the transition from traditional to digital mediums.",
+    "courseId": "ART-305",
+    "courseName": "Art History",
+    "dueDate": "2024-01-30T23:59:00Z",
+    "maxPoints": 85,
+    "allowedFileTypes": [".pdf", ".doc", ".docx"],
+    "maxFileSize": 5242880,
+    "status": "submitted"
+  },
+  {
+    "Id": 6,
+    "title": "Machine Learning Homework 4",
+    "description": "Implement a neural network from scratch using only NumPy. Train on the provided dataset and achieve at least 85% accuracy. Submit both code and a detailed report explaining your architecture choices and optimization techniques.",
+    "courseId": "CS-501",
+    "courseName": "Machine Learning",
+    "dueDate": "2024-02-10T23:59:00Z",
+    "maxPoints": 120,
+    "allowedFileTypes": [".py", ".ipynb", ".pdf", ".zip"],
+    "maxFileSize": 15728640,
+    "status": "pending"
+  }
+]

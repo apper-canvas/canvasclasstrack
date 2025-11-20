@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "type": "new_submission",
+    "assignmentTitle": "Essay: Modern Art Movements",
+    "studentName": "John Smith",
+    "timestamp": "2024-01-29T14:30:00Z",
+    "read": false
+  },
+  {
+    "Id": 2,
+    "type": "late_submission",
+    "assignmentTitle": "Calculus Problem Set 7",
+    "studentName": "John Smith",
+    "timestamp": "2024-01-21T08:45:00Z",
+    "read": true
+  },
+  {
+    "Id": 3,
+    "type": "grade_posted",
+    "assignmentTitle": "Database Design Assignment",
+    "studentName": "John Smith",
+    "timestamp": "2024-01-26T11:20:00Z",
+    "read": false
+  }
+]
