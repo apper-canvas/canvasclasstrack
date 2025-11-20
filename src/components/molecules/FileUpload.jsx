@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react"
-import { useDropzone } from "react-dropzone"
 import ApperIcon from "@/components/ApperIcon"
 import Button from "@/components/atoms/Button"
 import { cn } from "@/utils/cn"
@@ -15,35 +14,81 @@ const FileUpload = ({
   const [selectedFile, setSelectedFile] = useState(null)
   const [error, setError] = useState("")
   
-  const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+const [isDragActive, setIsDragActive] = useState(false)
+  const [isDragReject, setIsDragReject] = useState(false)
+  
+  const validateFile = (file) => {
+    const fileExtension = '.' + file.name.split('.').pop().toLowerCase()
+    const isValidType = allowedTypes.includes(fileExtension)
+    const isValidSize = file.size <= maxSize
+    
+    if (!isValidType) {
+      return { valid: false, error: `File type not allowed. Accepted types: ${allowedTypes.join(", ")}` }
+    }
+    if (!isValidSize) {
+      return { valid: false, error: `File size must be less than ${maxSize / 1024 / 1024}MB` }
+    }
+    
+    return { valid: true }
+  }
+  
+  const handleFileSelect = (files) => {
     setError("")
     
-    if (rejectedFiles.length > 0) {
-      const rejection = rejectedFiles[0]
-      if (rejection.errors[0]?.code === "file-too-large") {
-        setError(`File size must be less than ${maxSize / 1024 / 1024}MB`)
-      } else if (rejection.errors[0]?.code === "file-invalid-type") {
-        setError(`File type not allowed. Accepted types: ${allowedTypes.join(", ")}`)
-      }
+    if (files.length === 0) return
+    
+    const file = files[0]
+    const validation = validateFile(file)
+    
+    if (!validation.valid) {
+      setError(validation.error)
       return
     }
     
-    if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0]
-      setSelectedFile(file)
-    }
-  }, [allowedTypes, maxSize])
+    setSelectedFile(file)
+  }
   
-  const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
-    onDrop,
-    accept: allowedTypes.reduce((acc, type) => {
-      acc[`application/${type.slice(1)}`] = [type]
-      return acc
-    }, {}),
-    maxSize,
-    multiple: false,
-    disabled
-  })
+  const handleDragOver = useCallback((e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
+    if (disabled) return
+    
+    setIsDragActive(true)
+    
+    // Check if dragged item contains files
+    const hasFiles = e.dataTransfer.types.includes('Files')
+    setIsDragReject(!hasFiles)
+  }, [disabled])
+  
+  const handleDragLeave = useCallback((e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
+    // Only reset if leaving the main container
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setIsDragActive(false)
+      setIsDragReject(false)
+    }
+  }, [])
+  
+  const handleDrop = useCallback((e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
+    setIsDragActive(false)
+    setIsDragReject(false)
+    
+    if (disabled) return
+    
+    const files = Array.from(e.dataTransfer.files)
+    handleFileSelect(files)
+  }, [disabled, allowedTypes, maxSize])
+  
+  const handleInputChange = (e) => {
+    const files = Array.from(e.target.files)
+    handleFileSelect(files)
+  }
   
   const handleUpload = async () => {
     if (!selectedFile) return
@@ -95,16 +140,27 @@ const FileUpload = ({
   
   return (
     <div className="space-y-4">
-      <div
-        {...getRootProps()}
+<div
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        onClick={() => !disabled && document.getElementById('file-input').click()}
         className={cn(
           "border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200 cursor-pointer",
           isDragActive && !isDragReject ? "border-primary bg-blue-50" : "",
           isDragReject ? "border-red-400 bg-red-50" : "",
-          !isDragActive && !isDragReject ? "border-slate-300 hover:border-slate-400 hover:bg-slate-50" : ""
+          !isDragActive && !isDragReject ? "border-slate-300 hover:border-slate-400 hover:bg-slate-50" : "",
+          disabled ? "cursor-not-allowed opacity-50" : ""
         )}
       >
-        <input {...getInputProps()} />
+        <input 
+          id="file-input"
+          type="file"
+          onChange={handleInputChange}
+          accept={allowedTypes.join(',')}
+          className="hidden"
+          disabled={disabled}
+        />
         
         {selectedFile ? (
           <div className="space-y-3">
